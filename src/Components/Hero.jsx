@@ -1,17 +1,105 @@
-import React from 'react';
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { Typewriter } from "react-simple-typewriter";
 
 const Hero = () => {
+    const textRef = useRef(null);
+    const heroRef = useRef(null);
+    const imageRef = useRef(null);
+    const contentRef = useRef(null);
+
+    useEffect(() => { 
+        const tl = gsap.timeline(); 
+        tl.from(contentRef.current,{
+            opacity:0,
+            y:80,
+            duration:1,
+            ease:"power4.out"
+        })
+        .from(imageRef.current,{
+            opacity:0,
+            scale:.7,
+            rotate:15,
+            duration:1,
+            ease:"back.out(1.8)"
+        },"<");
+
+        const titles=[
+            "Rubel Hossen",
+            "Frontend Developer",
+            "Backend Developer",
+            "MERN Stack Developer",
+            "Full Stack Developer"
+        ]; 
+        let index=0; 
+        const changeText=()=>{ 
+        gsap.to(textRef.current,{
+            opacity:0,
+            y:-20,
+            duration:.4,
+            onComplete:()=>{ 
+                index=(index+1)%titles.length; 
+                textRef.current.innerHTML=titles[index]; 
+                gsap.fromTo(textRef.current,
+                {
+                    opacity:0,
+                    y:20
+                },
+                {
+                    opacity:1,
+                    y:0,
+                    duration:.6,
+                    ease:"power3.out"
+                }) 
+            }
+        }) 
+        } 
+            const interval=setInterval(changeText,2500); 
+            return ()=>clearInterval(interval); 
+    },[]);
+
+
+    useEffect(()=>{ 
+        const image=imageRef.current; 
+        const move=(e)=>{ 
+            const x=(window.innerWidth/2-e.clientX)/40;
+            const y=(window.innerHeight/2-e.clientY)/40; 
+            gsap.to(image,{
+                x:-x,
+                y:-y,
+                duration:.8,
+                ease:"power3.out"
+        }) 
+        } 
+        window.addEventListener("mousemove",move); 
+        return()=>window.removeEventListener("mousemove",move); 
+    },[]);
+
     return (
-        <section className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden flex items-center" id="home" >
+        <section ref={heroRef} className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden flex items-center" id="home" >
             <div className="hero-glow top-1/4 left-1/4"></div>
             <div className="hero-glow bottom-1/4 right-1/4"></div>
             <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
-                <div data-purpose="hero-content">
+                <div ref={contentRef} data-purpose="hero-content">
                     <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
                         Hi, I'm
                         <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-red-500">
-                            Rubel Hossen
+                            <Typewriter
+                                words={[
+                                "Rubel Hossen",
+                                "Frontend Developer",
+                                "Backend Developer",
+                                "MERN Stack Developer",
+                                "Full Stack Developer",
+                                ]}
+                                loop={0}
+                                cursor
+                                cursorStyle="|"
+                                typeSpeed={120}
+                                deleteSpeed={70}
+                                delaySpeed={1800}
+                            />
                         </span>
                     </h1>
                     <p className="text-xl text-slate-400 mb-10 max-w-lg leading-relaxed">
@@ -34,7 +122,8 @@ const Hero = () => {
                 </div>
 
                 {/* Profile Image & Floating Icons */}
-                <div
+                <div 
+                    ref={imageRef}
                     className="relative flex justify-center items-center"
                     data-purpose="hero-image-container"
                 >

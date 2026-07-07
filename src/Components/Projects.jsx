@@ -16,7 +16,7 @@ const Projects = () => {
                         <img
                             alt="Product Craft (Assignment 10)"
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkAtgJxyeV3pg5QGfuU5i1g9xH5Y23T7swLKsasNiJDYY19MJqYdQmfQ251J-Olt5o60H3c5kYtvSrI2IsMH53GuCWsrQ17-v0Jsc4HGte8ETBHcuYzXGH6pQ8FhlelHEoVEWAe99I8m107TSwfH_ZkFQRiON5eD_DvxEj0FTE0BE_dzf-BiorC7xLuoCtvALHuegXLTmnZ7htaWtykkbjDFJEggH_DU1qLqz-9ZEADQiZpthZ5w3NomYSvjmRMWF67HI"
+                            src="/image/life-lessons.png"
                         />
                     </div>
                     <div className="p-8">
@@ -25,7 +25,7 @@ const Projects = () => {
                             A full-stack interactive project hub featuring secure user authentication, responsive design layouts, dynamic list views, and streamlined data mutations.
                         </p>
                         <div className="flex flex-wrap gap-2 mb-8">
-                            {["React.js", "Node.js", "Express", "MongoDB", "Tailwind CSS"].map((tech) => (
+                            {["Next.js", "Node.js", "Express", "MongoDB", "Tailwind CSS", "Better Auth"].map((tech) => (
                                 <span
                                     key={tech}
                                     className="px-3 py-1 bg-slate-800/80 border border-white/5 rounded-md text-xs font-semibold text-slate-350"
@@ -63,12 +63,12 @@ const Projects = () => {
                         />
                     </div>
                     <div className="p-8">
-                        <h3 className="text-2xl font-bold mb-3 text-slate-100 font-sans">Thrivon Fashion Storefront</h3>
+                        <h3 className="text-2xl font-bold mb-3 text-slate-100 font-sans">Thrivon Fashion (E-commerce)</h3>
                         <p className="text-slate-400 mb-6 font-medium">
                             A premium, high-performance fashion web application featuring curated seasonal catalogs, filterable categories, shopping cart states, and seamless user flows.
                         </p>
                         <div className="flex flex-wrap gap-2 mb-8">
-                            {["React.js", "Tailwind CSS", "JavaScript", "Netlify"].map((tech) => (
+                            {["React.js", "Node.js", "Express", "MongoDB", "Tailwind CSS", "JavaScript"].map((tech) => (
                                 <span
                                 key={tech}
                                 className="px-3 py-1 bg-slate-800/80 border border-white/5 rounded-md text-xs font-semibold text-slate-350"

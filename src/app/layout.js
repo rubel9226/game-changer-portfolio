@@ -1,3 +1,4 @@
+import CustomCursor from "@/Components/CustomCursor";
 import "./globals.css";
 
 export const metadata = {
@@ -7,7 +8,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth"> 
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="bg-background text-on-background antialiased min-h-screen">
+        <CustomCursor />
         {children}
       </body>
     </html>

@@ -3,80 +3,47 @@ import gsap from "gsap";
 import { Typewriter } from "react-simple-typewriter";
 
 const Hero = () => {
-    const textRef = useRef(null);
     const heroRef = useRef(null);
     const imageRef = useRef(null);
     const contentRef = useRef(null);
 
+    // Intro entry animations
     useEffect(() => { 
         const tl = gsap.timeline(); 
-        tl.from(contentRef.current,{
-            opacity:0,
-            y:80,
-            duration:1,
-            ease:"power4.out"
+        tl.from(contentRef.current, {
+            opacity: 0,
+            y: 80,
+            duration: 1,
+            ease: "power4.out"
         })
-        .from(imageRef.current,{
-            opacity:0,
-            scale:.7,
-            rotate:15,
-            duration:1,
-            ease:"back.out(1.8)"
-        },"<");
+        .from(imageRef.current, {
+            opacity: 0,
+            scale: 0.7,
+            rotate: 15,
+            duration: 1,
+            ease: "back.out(1.8)"
+        }, "<");
+    }, []);
 
-        const titles=[
-            "Rubel Hossen",
-            "Frontend Developer",
-            "Backend Developer",
-            "MERN Stack Developer",
-            "Full Stack Developer"
-        ]; 
-        let index=0; 
-        const changeText=()=>{ 
-        gsap.to(textRef.current,{
-            opacity:0,
-            y:-20,
-            duration:.4,
-            onComplete:()=>{ 
-                index=(index+1)%titles.length; 
-                textRef.current.innerHTML=titles[index]; 
-                gsap.fromTo(textRef.current,
-                {
-                    opacity:0,
-                    y:20
-                },
-                {
-                    opacity:1,
-                    y:0,
-                    duration:.6,
-                    ease:"power3.out"
-                }) 
-            }
-        }) 
-        } 
-            const interval=setInterval(changeText,2500); 
-            return ()=>clearInterval(interval); 
-    },[]);
-
-
-    useEffect(()=>{ 
-        const image=imageRef.current; 
-        const move=(e)=>{ 
-            const x=(window.innerWidth/2-e.clientX)/40;
-            const y=(window.innerHeight/2-e.clientY)/40; 
-            gsap.to(image,{
-                x:-x,
-                y:-y,
-                duration:.8,
-                ease:"power3.out"
-        }) 
-        } 
-        window.addEventListener("mousemove",move); 
-        return()=>window.removeEventListener("mousemove",move); 
-    },[]);
+    // Mousemove interactive parallax effect
+    useEffect(() => { 
+        const image = imageRef.current; 
+        const move = (e) => { 
+            const x = (window.innerWidth / 2 - e.clientX) / 40;
+            const y = (window.innerHeight / 2 - e.clientY) / 40; 
+            gsap.to(image, {
+                x: -x,
+                y: -y,
+                duration: 0.8,
+                ease: "power3.out"
+            });
+        }; 
+        window.addEventListener("mousemove", move); 
+        return () => window.removeEventListener("mousemove", move); 
+    }, []);
 
     return (
-        <section ref={heroRef} className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden flex items-center" id="home" >
+        <section ref={heroRef} className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden flex items-center" id="home">
             <div className="hero-glow top-1/4 left-1/4"></div>
             <div className="hero-glow bottom-1/4 right-1/4"></div>
             <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
@@ -87,11 +54,10 @@ const Hero = () => {
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-red-500">
                             <Typewriter
                                 words={[
-                                "Rubel Hossen",
-                                "Frontend Developer",
-                                "Backend Developer",
-                                "MERN Stack Developer",
-                                "Full Stack Developer",
+                                    "Rubel Hossen",
+                                    "Frontend Developer",
+                                    "Backend Developer",
+                                    "Full Stack Developer",
                                 ]}
                                 loop={0}
                                 cursor
@@ -129,7 +95,7 @@ const Hero = () => {
                 >
                     <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full bg-[#01050D] shadow-2xl">
                         <img
-                            alt="Sajid Yaqub"
+                            alt="Rubel Hossen"
                             className="w-full h-full object-cover rounded-full"
                             src="/image/me.png"
                         />

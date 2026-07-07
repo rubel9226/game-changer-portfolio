@@ -5,8 +5,13 @@ const Navbar = ({activeSection, mobileMenuOpen, setMobileMenuOpen}) => {
             <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0f1a]/85 backdrop-blur-md border-b border-white/10">
                 <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                     <a href="#home" className="text-xl font-bold tracking-tight">
-                        <span className="text-white">MERN Stack</span>{" "}
-                        <span className="text-accent-pink">Developer</span>
+                        <img 
+                            src="/image/favicon.ico" 
+                            alt="logo" 
+                            className="w-11 md:w-12 lg:w-13" 
+                        />
+                        {/* <span className="text-white">MERN Stack</span>{" "}
+                        <span className="text-accent-pink">Developer</span> */}
                     </a>
 
                     {/* Desktop Navigation */}
@@ -14,6 +19,7 @@ const Navbar = ({activeSection, mobileMenuOpen, setMobileMenuOpen}) => {
                         {[
                             { id: "home", label: "Home" },
                             { id: "about", label: "About" },
+                            { id: "skills", label: "Skills" },
                             { id: "services", label: "Services" },
                             { id: "projects", label: "Projects" },
                             { id: "contact", label: "Contact" },
@@ -78,6 +84,7 @@ const Navbar = ({activeSection, mobileMenuOpen, setMobileMenuOpen}) => {
                         {[
                             { id: "home", label: "Home" },
                             { id: "about", label: "About" },
+                            { id: "skills", label: "Skills" },
                             { id: "services", label: "Services" },
                             { id: "projects", label: "Projects" },
                             { id: "contact", label: "Contact" },
